@@ -23,13 +23,22 @@ public class MainActivity2 extends AppCompatActivity {
 
 
     }
-    public void onClick(View view) {
+    public void onClick1(View view) {
 
-                 Intent intent = new Intent(MainActivity2.this, Menu.class);
+                Intent intent = new Intent(MainActivity2.this, Menu.class);
                 String text1 = text.getText().toString();
                 intent.putExtra("Mon_text",text1);
                 startActivity(intent);
 
              }
+
+    public void onClick2(View view) {
+
+        Intent intent = new Intent(MainActivity2.this, Inscription.class);
+        String text1 = text.getText().toString();
+        intent.putExtra("Mon_text",text1);
+        startActivity(intent);
+
+    }
 
 }

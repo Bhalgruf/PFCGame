@@ -10,13 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PFC">
         <activity
+            android:name=".Menu"
+            android:exported="true"
+            android:label=".Menu"
+            android:theme="@style/Theme.PFC" />
+        <activity
             android:name=".Inscription"
-            android:exported="true" />
+            android:exported="true"
+            android:label=".Inscription"
+            android:theme="@style/Theme.PFC" />
         <activity
             android:name=".Jeu1"
-            android:exported="true" />
-        <activity
-            android:name=".Menu"
             android:exported="true" />
         <activity
             android:name=".MainActivity2"
