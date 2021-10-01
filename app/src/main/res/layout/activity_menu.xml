@@ -19,6 +19,7 @@
         android:id="@+id/btn_jeu1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="onClick6"
         android:text="Jeu1"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toEndOf="parent"
