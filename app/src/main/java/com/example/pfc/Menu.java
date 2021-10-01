@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class Menu extends AppCompatActivity {
     Button btn_retour1;
     Button Jeu1;
@@ -19,6 +21,7 @@ public class Menu extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
         btn_retour1 =(Button)findViewById(R.id.btn_retour1);
         Jeu1 =(Button)findViewById(R.id.btn_jeu1);
+
 
     }
 
