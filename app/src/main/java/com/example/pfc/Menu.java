@@ -13,27 +13,36 @@ import com.google.firebase.auth.FirebaseAuth;
 public class Menu extends AppCompatActivity {
     Button btn_retour1;
     Button Jeu1;
+    Button Jeu2;
     EditText text;
+
+    Intent game1 = new Intent(Menu.this, Jeu1.class);
+    Intent game2 = new Intent(Menu.this, Jeu2.class);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_menu);
-        btn_retour1 =(Button)findViewById(R.id.btn_retour1);
-        Jeu1 =(Button)findViewById(R.id.btn_jeu1);
+        btn_retour1 = (Button) findViewById(R.id.btn_retour1);
+        Jeu1 = (Button) findViewById(R.id.btn_jeu1);
+        Jeu2 = (Button) findViewById(R.id.btn_jeu2);
 
 
     }
 
-    public void onClick6(View view) {
-        Intent intent = new Intent(Menu.this, Jeu1.class);
-        startActivity(intent);
+    public void onClickMenu(View view) {
 
-    }
-
-    public void onClick4(View view) {
-
-        finish();
-
+        switch (view.getId()) {
+            case R.id.btn_retour1:
+                finish();
+                break;
+            case R.id.btn_jeu1:
+                startActivity(game1);
+                break;
+            case R.id.btn_jeu2:
+                startActivity(game2);
+                break;
+        }
     }
 }
