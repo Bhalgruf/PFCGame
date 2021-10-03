@@ -10,9 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
-public class Jeu1 extends AppCompatActivity {
+public class Jeu2 extends AppCompatActivity {
 
     public Button quitter;
     public ImageView ComputerChoiceImg;
@@ -21,6 +20,7 @@ public class Jeu1 extends AppCompatActivity {
     public ImageButton rockImg;
     public ImageButton paperImg;
     public ImageButton scissorsImg;
+    public ImageButton wellImg;
     public TextView player;
     public TextView computer;
     public TextView playerScore;
@@ -36,110 +36,130 @@ public class Jeu1 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_jeu1);
-        quitter =(Button)findViewById(R.id.btn_quitter);
-        rockImg = (ImageButton) findViewById(R.id.imageButtonRock);
-        paperImg = (ImageButton) findViewById(R.id.imageButtonPaper);
-        scissorsImg = (ImageButton) findViewById(R.id.imageButtonScissors);
-        ComputerChoiceImg = (ImageView) findViewById(R.id.imageViewComputerChoice);
-        PlayerChoiceImg = (ImageView) findViewById(R.id.imageViewPlayerChoice);
-        mainImg = (ImageView) findViewById(R.id.imageViewMain);
+        setContentView(R.layout.activity_jeu2);
+
+        quitter = (Button) findViewById(R.id.button_quitter2);
+        rockImg = (ImageButton) findViewById(R.id.imageButtonRock2);
+        paperImg = (ImageButton) findViewById(R.id.imageButtonPaper2);
+        wellImg = (ImageButton) findViewById(R.id.imageButtonWell);
+        scissorsImg = (ImageButton) findViewById(R.id.imageButtonScissors2);
+        ComputerChoiceImg = (ImageView) findViewById(R.id.imageViewComputerChoice2);
+        PlayerChoiceImg = (ImageView) findViewById(R.id.imageViewPlayerChoice2);
+        mainImg = (ImageView) findViewById(R.id.imageViewMain2);
         player = (TextView) findViewById(R.id.textViewPlayerGame2);
         computer = (TextView) findViewById(R.id.textViewComputerGame2);
         playerScore = (TextView) findViewById(R.id.textViewScorePlayerGame2);
         computerScore = (TextView) findViewById(R.id.textViewScoreComputerGame2);
-        round = (TextView) findViewById(R.id.textViewRoundNbr);
-        resultRound = (TextView) findViewById(R.id.textViewNbrRound);
-        resultFinal = (TextView) findViewById(R.id.textViewResultFinal);
+        round = (TextView) findViewById(R.id.textViewNbrRound);
+        resultRound = (TextView) findViewById(R.id.textViewResultRound2);
+        resultFinal = (TextView) findViewById(R.id.textViewResultFinal2);
     }
 
+    public void onClickGame2(View view) {
 
-    public void onClickGame1(View view){
+        int playerChoice;//0 = rock ; 1 = paper ; 2 = scissors ; 3 = well
 
-        int playerChoice;//0 = rock ; 1 = paper ; 2 = scissors
-
-        switch (view.getId()){
-            case R.id.btn_quitter:
+        switch (view.getId()) {
+            case R.id.button_quitter2:
                 finish();
                 break;
-            case R.id.imageButtonRock:
+            case R.id.imageButtonRock2:
                 PlayerChoiceImg.setImageResource(R.drawable.rock);
                 mainImg.setVisibility(View.INVISIBLE);
                 playerChoice = 0;
-                checkGame(view,playerChoice);
+                checkGame2(view, playerChoice);
                 break;
-            case R.id.imageButtonPaper:
+            case R.id.imageButtonPaper2:
                 PlayerChoiceImg.setImageResource(R.drawable.paper);
                 mainImg.setVisibility(View.INVISIBLE);
                 playerChoice = 1;
-                checkGame(view,playerChoice);
+                checkGame2(view, playerChoice);
                 break;
-            case R.id.imageButtonScissors:
+            case R.id.imageButtonScissors2:
                 PlayerChoiceImg.setImageResource(R.drawable.scissors);
                 mainImg.setVisibility(View.INVISIBLE);
                 playerChoice = 2;
-                checkGame(view,playerChoice);
+                checkGame2(view, playerChoice);
+                break;
+            case R.id.imageButtonWell:
+                PlayerChoiceImg.setImageResource(R.drawable.well);
+                mainImg.setVisibility(View.INVISIBLE);
+                playerChoice = 3;
+                checkGame2(view, playerChoice);
                 break;
         }
     }
 
-    public void checkGame(View view, int Choice){
+    public void checkGame2(View view, int Choice) {
         Random rand = new Random();
-        int computerChoice; //0 = rock ; 1 = paper ; 2 = scissors
-        int plyChoice = Choice;//0 = rock ; 1 = paper ; 2 = scissors
-        computerChoice = rand.nextInt(3);
+        int computerChoice; //0 = rock ; 1 = paper ; 2 = scissors ; 3 = well
+        int plyChoice = Choice;//0 = rock ; 1 = paper ; 2 = scissors ; 3 = well
+        computerChoice = rand.nextInt(4);
 
         countRound++;
 
-        switch(computerChoice){
-            case 0 :
+        switch (computerChoice) {
+            case 0:
                 ComputerChoiceImg.setImageResource(R.drawable.rock);
                 break;
-            case 1 :
+            case 1:
                 ComputerChoiceImg.setImageResource(R.drawable.paper);
                 break;
-            case 2 :
+            case 2:
                 ComputerChoiceImg.setImageResource(R.drawable.scissors);
+                break;
+            case 3:
+                ComputerChoiceImg.setImageResource(R.drawable.well);
                 break;
         }
 
-        if(plyChoice==computerChoice){
+        if (plyChoice == computerChoice) {
             //Tie
             resultRound.setText("Tie !");
             countRound--;
-        }else{
+        } else {
 
-            if(plyChoice==0 && computerChoice==1){
+            if (plyChoice == 0 && (computerChoice == 1 || computerChoice == 3)) { //player ROCK computer PAPER or WELL
                 resultRound.setText("Computer Won !");
                 scoreComputer++;
-            }else if(plyChoice==0 && computerChoice==2){
+            } else if (plyChoice == 0 && computerChoice == 2) { //player ROCK computer SCISSORS
                 resultRound.setText("Player Won !");
                 scorePlayer++;
             }
 
-            if(plyChoice==1 && computerChoice== 2){
+            if (plyChoice == 1 && computerChoice == 2) { //player PAPER computer SCISSORS
                 resultRound.setText("Computer Won !");
                 scoreComputer++;
-            }else if(plyChoice ==1 && computerChoice==0 ){
+            } else if (plyChoice == 1 && (computerChoice == 0 || computerChoice ==3)) { //player PAPER computer ROCK or WELL
                 resultRound.setText("Player Won !");
                 scorePlayer++;
             }
 
-            if(plyChoice==2 && computerChoice == 0){
+            if (plyChoice == 2 && computerChoice == 0) { //player SCISSORS computer ROCK
                 resultRound.setText("Computer Won !");
                 scoreComputer++;
-            }else if(plyChoice==2 && computerChoice==1){
+            } else if (plyChoice == 2 && (computerChoice == 1 || computerChoice == 3)) { //player SCISSORS computer PAPER or WELL
                 resultRound.setText("Player Won !");
                 scorePlayer++;
             }
+
+            if (plyChoice == 3 && computerChoice == 1){ //player WELL computer PAPER
+                resultRound.setText("Computer Won !");
+                scoreComputer++;
+            }else if(plyChoice == 3 && (computerChoice == 0 || computerChoice == 2)){ //player WELL computer ROCK or SCISSORS
+                resultRound.setText("Player Won !");
+                scorePlayer++;
+            }
+
+
         }
 
-        if(scorePlayer==3 || scoreComputer==3){
+        if (scorePlayer == 3 || scoreComputer == 3) {
 
             resultRound.setText("Game Over");
-            if(scorePlayer==3){
+            if (scorePlayer == 3) {
                 resultFinal.setText("Player Won !");
-            }else{
+            } else {
                 resultFinal.setText("Computer Won !");
             }
 
@@ -148,14 +168,11 @@ public class Jeu1 extends AppCompatActivity {
             rockImg.setVisibility(View.INVISIBLE);
             paperImg.setVisibility(View.INVISIBLE);
             scissorsImg.setVisibility(View.INVISIBLE);
+            wellImg.setVisibility(View.INVISIBLE);
         }
 
         playerScore.setText(String.valueOf(scorePlayer));
         computerScore.setText(String.valueOf(scoreComputer));
         round.setText(String.valueOf(countRound));
-
     }
-
-
-
 }
