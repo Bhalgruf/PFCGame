@@ -40,7 +40,6 @@ public class MainActivity2 extends AppCompatActivity {
     public void onClickMain(View view) {
         switch (view.getId()){
             case R.id.btn_co:
-
                 startSignInActivity();
                 break;
 
@@ -78,8 +77,7 @@ public class MainActivity2 extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
-                        Intent intent = new Intent(MainActivity2.this, Menu.class);
-                        startActivity(intent);
+                        startActivity(new Intent(MainActivity2.this, Menu.class));
                     }else{
                         Toast.makeText(MainActivity2.this,"Failed to login!",Toast.LENGTH_LONG).show();
                     }
