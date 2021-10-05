@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,11 +36,11 @@ import java.util.regex.Pattern;
 public class Inscription extends AppCompatActivity {
 
 
-
-    private TextView banner, registerUser;
     private EditText editText_nom, editTextText_prénom, editText_date, editText_login, editText_mdp;
+    private TextView textSexe;
     private Button  btn_enregistrer;
     private RadioGroup sexe;
+    private RadioButton Homme,Femme, Autre;
     private FirebaseAuth mAuth;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -59,8 +60,13 @@ public class Inscription extends AppCompatActivity {
         editText_date=(EditText) findViewById(R.id.editText_date);
         editText_login=(EditText) findViewById(R.id.editText_login);
         editText_mdp=(EditText) findViewById(R.id.editText_mdp);
+        textSexe= (TextView) findViewById(R.id.textView_sexe);
         sexe=(RadioGroup) findViewById(R.id.radiog);
         btn_enregistrer=(Button) findViewById(R.id.btn_enregistrer);
+        Homme =(RadioButton) findViewById(R.id.radioButton_H);
+        Femme =(RadioButton) findViewById(R.id.radioButton_F);
+        Autre =(RadioButton) findViewById(R.id.radioButton_autre);
+
 
 
 
@@ -83,13 +89,21 @@ public class Inscription extends AppCompatActivity {
     }
 
     private void registerUser() {
+
         String email = editText_login.getText().toString().trim();
         String mdp = editText_mdp.getText().toString().trim();
         String nom = editText_nom.getText().toString().trim();
         String prénom = editTextText_prénom.getText().toString().trim();
         String date = editText_date.getText().toString().trim();
-        String tonsexe= sexe.toString().trim();
 
+
+
+
+        if(!Homme.isChecked()&&!Femme.isChecked()&&!Autre.isChecked()){
+            textSexe.setError("Sexe is required!");
+            textSexe.requestFocus();
+            return;
+        }
 
 
         if(mdp.isEmpty()){
@@ -139,10 +153,21 @@ public class Inscription extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             //  Log.d(TAG, "createUserWithEmail:success");
                             Map<String, Object> user = new HashMap<>();
+                            if(Homme.isChecked()){
+                                user.put("sexe","Homme");
+                            }
+                            if(Femme.isChecked()){
+                                user.put("sexe","Femme");
+                            }
+                            if(Autre.isChecked()){
+                                user.put("sexe","Autre");
+                            }
                             user.put("first",prénom);
                             user.put("last", nom);
                             user.put("email",email);
-                            user.put("password",mdp);
+                            user.put("date",date);
+                            user.put("score","0");
+
 
                             db.collection("users")
                                     .add(user)
@@ -171,30 +196,6 @@ public class Inscription extends AppCompatActivity {
                     }
                 });
 
-
-     /*   mAuth.createUserWithEmailAndPassword(email, mdp);
-        Map<String, Object> user = new HashMap<>();
-        user.put("first",prénom);
-        user.put("last", nom);
-        user.put("email",email);
-        user.put("password",mdp);
-
-        db.collection("users")
-                .add(user)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error adding document", e);
-                    }
-                });
-
-*/
 
     }
 
