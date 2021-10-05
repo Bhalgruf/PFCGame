@@ -239,10 +239,9 @@
       android:layout_height="wrap_content"
       android:textSize="34sp"
       android:textStyle="bold"
-      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintBottom_toTopOf="@+id/guideline27"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="@+id/guideline27" />
+      app:layout_constraintStart_toStartOf="parent" />
 
   <Button
       android:id="@+id/buttonRules"
@@ -252,5 +251,17 @@
       android:text="Rules"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintTop_toTopOf="parent" />
+
+  <Button
+      android:id="@+id/buttonAgain3"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:onClick="onClickGame3"
+      android:text="Rejouer"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.498"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/guideline27" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

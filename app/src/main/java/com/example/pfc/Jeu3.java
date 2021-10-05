@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,6 +14,7 @@ import java.util.Random;
 public class Jeu3 extends AppCompatActivity {
 
     public Button quitter;
+    public Button again;
     public Button rules;
     public Button rock;
     public Button paper;
@@ -33,9 +33,9 @@ public class Jeu3 extends AppCompatActivity {
     public TextView resultRound;
     public TextView resultFinal;
 
-    public int countRound;
-    public int scorePlayer;
-    public int scoreComputer;
+    public int countRound = 0;
+    public int scorePlayer = 0;
+    public int scoreComputer = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +43,7 @@ public class Jeu3 extends AppCompatActivity {
         setContentView(R.layout.activity_jeu3);
 
         quitter = (Button) findViewById(R.id.buttonRetour3);
+        again = (Button) findViewById(R.id.buttonAgain3);
         rules = (Button) findViewById(R.id.buttonRules);
         rock = (Button) findViewById(R.id.buttonRock3);
         paper = (Button) findViewById(R.id.buttonPaper3);
@@ -60,6 +61,8 @@ public class Jeu3 extends AppCompatActivity {
         round = (TextView) findViewById(R.id.textViewRoundNbr3);
         resultRound = (TextView) findViewById(R.id.textViewResultRoundLabel);
         resultFinal = (TextView) findViewById(R.id.textViewResultFinal3);
+
+        again.setVisibility(View.INVISIBLE);
     }
 
     public void onClickGame3(View view) {
@@ -73,6 +76,11 @@ public class Jeu3 extends AppCompatActivity {
             case R.id.buttonRules:
                 Intent rules = new Intent(this, Rules.class);
                 startActivity(rules);
+                break;
+            case R.id.buttonAgain3:
+                Intent restart = getIntent();
+                finish();
+                startActivity(restart);
                 break;
             case R.id.buttonRock3:
                 PlayerChoiceImg.setImageResource(R.drawable.rock);
@@ -226,6 +234,8 @@ public class Jeu3 extends AppCompatActivity {
             water.setVisibility(View.INVISIBLE);
             air.setVisibility(View.INVISIBLE);
             sponge.setVisibility(View.INVISIBLE);
+
+            again.setVisibility(View.VISIBLE);
         }
 
         playerScore.setText(String.valueOf(scorePlayer));

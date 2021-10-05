@@ -129,8 +129,8 @@
 
     <ImageButton
         android:id="@+id/imageButtonScissors"
-        android:layout_width="116dp"
-        android:layout_height="153dp"
+        android:layout_width="109dp"
+        android:layout_height="152dp"
         android:layout_marginStart="280dp"
         android:backgroundTint="@color/white"
         android:onClick="onClickGame1"
@@ -198,9 +198,20 @@
         android:layout_height="wrap_content"
         android:textSize="34sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewPlayerChoice"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonAgain1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClickGame1"
+        android:text="Rejouer"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/imageButtonScissors"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline22" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewPlayerChoice" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

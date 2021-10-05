@@ -2,6 +2,7 @@ package com.example.pfc;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +16,7 @@ import java.util.concurrent.TimeUnit;
 public class Jeu1 extends AppCompatActivity {
 
     public Button quitter;
+    public Button again;
     public ImageView ComputerChoiceImg;
     public ImageView PlayerChoiceImg;
     public ImageView mainImg;
@@ -38,6 +40,7 @@ public class Jeu1 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jeu1);
         quitter =(Button)findViewById(R.id.btn_quitter);
+        again = (Button) findViewById(R.id.buttonAgain1);
         rockImg = (ImageButton) findViewById(R.id.imageButtonRock);
         paperImg = (ImageButton) findViewById(R.id.imageButtonPaper);
         scissorsImg = (ImageButton) findViewById(R.id.imageButtonScissors);
@@ -51,6 +54,8 @@ public class Jeu1 extends AppCompatActivity {
         round = (TextView) findViewById(R.id.textViewRoundNbr);
         resultRound = (TextView) findViewById(R.id.textViewResultRound);
         resultFinal = (TextView) findViewById(R.id.textViewResultFinal);
+
+        again.setVisibility(View.INVISIBLE);
     }
 
 
@@ -61,6 +66,11 @@ public class Jeu1 extends AppCompatActivity {
         switch (view.getId()){
             case R.id.btn_quitter:
                 finish();
+                break;
+            case R.id.buttonAgain1:
+                Intent restart = getIntent();
+                finish();
+                startActivity(restart);
                 break;
             case R.id.imageButtonRock:
                 PlayerChoiceImg.setImageResource(R.drawable.rock);
@@ -148,6 +158,8 @@ public class Jeu1 extends AppCompatActivity {
             rockImg.setVisibility(View.INVISIBLE);
             paperImg.setVisibility(View.INVISIBLE);
             scissorsImg.setVisibility(View.INVISIBLE);
+
+            again.setVisibility(View.VISIBLE);
         }
 
         playerScore.setText(String.valueOf(scorePlayer));
