@@ -45,6 +45,10 @@ public class Menu extends AppCompatActivity {
                 Intent game2 = new Intent(Menu.this, Jeu2.class);
                 startActivity(game2);
                 break;
+            case R.id.btn_jeu3:
+                Intent game3 = new Intent(Menu.this, Jeu3.class);
+                startActivity(game3);
+                break;
         }
     }
 }

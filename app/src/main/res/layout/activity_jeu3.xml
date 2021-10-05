@@ -6,4 +6,251 @@
     android:layout_height="match_parent"
     tools:context=".Jeu3">
 
+  <androidx.constraintlayout.widget.Guideline
+      android:id="@+id/guideline24"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="16dp"
+      android:orientation="vertical"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintGuide_percent="0.5"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+  <Button
+      android:id="@+id/buttonRetour3"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:onClick="onClickGame3"
+      android:text="Quitter"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+  <TextView
+      android:id="@+id/textViewRound3"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="16dp"
+      android:text="Round"
+      android:textSize="24sp"
+      android:textStyle="bold"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+  <TextView
+      android:id="@+id/textViewRoundNbr3"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="24dp"
+      android:layout_marginTop="16dp"
+      android:text="0"
+      android:textSize="24sp"
+      android:textStyle="bold"
+      app:layout_constraintStart_toEndOf="@+id/textViewRound3"
+      app:layout_constraintTop_toTopOf="parent" />
+
+  <androidx.constraintlayout.widget.Guideline
+      android:id="@+id/guideline25"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      app:layout_constraintGuide_percent="0.25" />
+
+  <TextView
+      android:id="@+id/textViewPlayerLabel3"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Player"
+      android:textSize="24sp"
+      app:layout_constraintBottom_toTopOf="@+id/guideline25"
+      app:layout_constraintEnd_toStartOf="@+id/guideline24"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+  <TextView
+      android:id="@+id/textViewComputerLabel3"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Computer"
+      android:textSize="24sp"
+      app:layout_constraintBottom_toTopOf="@+id/guideline25"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="@+id/guideline24"
+      app:layout_constraintTop_toTopOf="parent" />
+
+  <TextView
+      android:id="@+id/textViewScorePlayer3"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="0"
+      android:textSize="24sp"
+      app:layout_constraintBottom_toTopOf="@+id/guideline25"
+      app:layout_constraintEnd_toStartOf="@+id/guideline24"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/textViewPlayerLabel3" />
+
+  <TextView
+      android:id="@+id/textViewScoreComputer3"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="0"
+      android:textSize="24sp"
+      app:layout_constraintBottom_toTopOf="@+id/guideline25"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="@+id/guideline24"
+      app:layout_constraintTop_toBottomOf="@+id/textViewComputerLabel3" />
+
+  <androidx.constraintlayout.widget.Guideline
+      android:id="@+id/guideline27"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      app:layout_constraintGuide_percent="0.75" />
+
+  <Button
+      android:id="@+id/buttonRock3"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="32dp"
+      android:backgroundTint="#807979"
+      android:onClick="onClickGame3"
+      android:text="Pierre"
+      android:textColor="@color/black"
+      app:layout_constraintEnd_toStartOf="@+id/buttonPaper3"
+      app:layout_constraintHorizontal_bias="0.646"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/guideline27" />
+
+  <Button
+      android:id="@+id/buttonPaper3"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="32dp"
+      android:backgroundTint="@color/white"
+      android:onClick="onClickGame3"
+      android:text="Papier"
+      android:textColor="@color/black"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/guideline27" />
+
+  <Button
+      android:id="@+id/buttonScissors3"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="32dp"
+      android:onClick="onClickGame3"
+      android:text="Ciseaux"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/buttonPaper3"
+      app:layout_constraintTop_toTopOf="@+id/guideline27" />
+
+  <Button
+      android:id="@+id/buttonSponge"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="8dp"
+      android:layout_marginBottom="32dp"
+      android:backgroundTint="@color/yellow"
+      android:onClick="onClickGame3"
+      android:text="Eponge"
+      android:textColor="@color/black"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toStartOf="@+id/buttonFire"
+      app:layout_constraintHorizontal_bias="0.5"
+      app:layout_constraintStart_toStartOf="parent" />
+
+  <Button
+      android:id="@+id/buttonFire"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="8dp"
+      android:layout_marginBottom="32dp"
+      android:backgroundTint="@color/red"
+      android:onClick="onClickGame3"
+      android:text="Feu"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toStartOf="@+id/buttonWater"
+      app:layout_constraintHorizontal_bias="0.5"
+      app:layout_constraintStart_toEndOf="@+id/buttonSponge" />
+
+  <Button
+      android:id="@+id/buttonWater"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="8dp"
+      android:layout_marginBottom="32dp"
+      android:backgroundTint="@color/blue"
+      android:onClick="onClickGame3"
+      android:text="Eau"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toStartOf="@+id/buttonAir"
+      app:layout_constraintHorizontal_bias="0.5"
+      app:layout_constraintStart_toEndOf="@+id/buttonFire" />
+
+  <Button
+      android:id="@+id/buttonAir"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="8dp"
+      android:layout_marginEnd="8dp"
+      android:layout_marginBottom="32dp"
+      android:backgroundTint="@color/teal_200"
+      android:onClick="onClickGame3"
+      android:text="Air"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.5"
+      app:layout_constraintStart_toEndOf="@+id/buttonWater" />
+
+  <ImageView
+      android:id="@+id/imageViewComputerChoice3"
+      android:layout_width="150dp"
+      android:layout_height="150dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/guideline25"
+      tools:srcCompat="@tools:sample/avatars" />
+
+  <ImageView
+      android:id="@+id/imageViewPlayerChoice3"
+      android:layout_width="150dp"
+      android:layout_height="150dp"
+      app:layout_constraintBottom_toTopOf="@+id/guideline27"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      tools:srcCompat="@tools:sample/avatars" />
+
+  <TextView
+      android:id="@+id/textViewResultRoundLabel"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textSize="24sp"
+      android:textStyle="bold"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+  <TextView
+      android:id="@+id/textViewResultFinal3"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textSize="34sp"
+      android:textStyle="bold"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/guideline27" />
+
+  <Button
+      android:id="@+id/buttonRules"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:onClick="onClickGame3"
+      android:text="Rules"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
