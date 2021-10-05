@@ -16,25 +16,36 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 
 public class Inscription extends AppCompatActivity {
+
+
 
     private TextView banner, registerUser;
     private EditText editText_nom, editTextText_prénom, editText_date, editText_login, editText_mdp;
     private Button  btn_enregistrer;
     private RadioGroup sexe;
     private FirebaseAuth mAuth;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     Button btn_retour;
     String TAG="BddInfo";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +61,8 @@ public class Inscription extends AppCompatActivity {
         editText_mdp=(EditText) findViewById(R.id.editText_mdp);
         sexe=(RadioGroup) findViewById(R.id.radiog);
         btn_enregistrer=(Button) findViewById(R.id.btn_enregistrer);
+
+
 
 
 
@@ -116,39 +129,72 @@ public class Inscription extends AppCompatActivity {
         }
 
 
+
         mAuth.createUserWithEmailAndPassword(email, mdp)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            Log.w(TAG, "OK c'est bien tout est bon ça marche");
                             // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "createUserWithEmail:success");
-                            User user = new User (nom,prénom,date,email,tonsexe);
-                            FirebaseDatabase.getInstance().getReference("Users")
-                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                    .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if (task.isSuccessful()) {
-                                        Toast.makeText(Inscription.this , "User has been registered successfully!", Toast.LENGTH_LONG).show();
-                                    }else{
-                                        Toast.makeText(Inscription.this,"Failed to register!",Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            });
+                            //  Log.d(TAG, "createUserWithEmail:success");
+                            Map<String, Object> user = new HashMap<>();
+                            user.put("first",prénom);
+                            user.put("last", nom);
+                            user.put("email",email);
+                            user.put("password",mdp);
+
+                            db.collection("users")
+                                    .add(user)
+                                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                        @Override
+                                        public void onSuccess(DocumentReference documentReference) {
+                                            Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                                            Toast.makeText(Inscription.this , "User has been registered successfully!", Toast.LENGTH_SHORT).show();
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Log.w(TAG, "Error adding document", e);
+                                        }
+                                    });
 
                         } else {
                             // If sign in fails, display a message to the user.
-                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                            /// Log.w(TAG, "createUserWithEmail:failure", task.getException());
                             Toast.makeText(Inscription.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
 
 
-                            }
                         }
-                    });
+                    }
+                });
 
 
+     /*   mAuth.createUserWithEmailAndPassword(email, mdp);
+        Map<String, Object> user = new HashMap<>();
+        user.put("first",prénom);
+        user.put("last", nom);
+        user.put("email",email);
+        user.put("password",mdp);
+
+        db.collection("users")
+                .add(user)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error adding document", e);
+                    }
+                });
+
+*/
 
     }
 

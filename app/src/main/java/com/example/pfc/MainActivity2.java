@@ -1,15 +1,19 @@
 package com.example.pfc;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-
-import java.util.Collections;
 
 public class MainActivity2 extends AppCompatActivity {
 
@@ -17,7 +21,8 @@ public class MainActivity2 extends AppCompatActivity {
 
     private static final int RC_SIGN_IN = 123;
     Button btn_con;
-    EditText text;
+    EditText editTextEmail,editTextPassword;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +30,8 @@ public class MainActivity2 extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
 
         btn_con =(Button)findViewById(R.id.btn_co);
-        text = (EditText) findViewById(R.id.editTextTextPersonName);
+        editTextEmail = (EditText) findViewById(R.id.email);
+        editTextPassword = (EditText) findViewById(R.id.Password);
         mAuth = FirebaseAuth.getInstance();
 
 
@@ -34,36 +40,51 @@ public class MainActivity2 extends AppCompatActivity {
     public void onClickMain(View view) {
         switch (view.getId()){
             case R.id.btn_co:
-                  Intent intent = new Intent(MainActivity2.this, Menu.class);
-               // startSignInActivity();
-                startActivity(intent);
+                startSignInActivity();
                 break;
 
             case R.id.btn_ins:
                 Intent intent2 = new Intent(MainActivity2.this, Inscription.class);
-                String text1 = text.getText().toString();
-                intent2.putExtra("Mon_text",text1);
                 startActivity(intent2);
                 break;
 
         }
     }
 
+    private void startSignInActivity() {
+        String email = editTextEmail.getText().toString().trim();
+        String password = editTextPassword.getText().toString().trim();
 
-       // private void startSignInActivity(){
+        if(email.isEmpty()){
+            editTextEmail.setError("Email is required");
+            editTextEmail.requestFocus();
+            return;
+        }
 
-       //      Choose authentication providers
-        //    List<AuthUI.IdpConfig> providers =
-         //           Collections.singletonList(new AuthUI.IdpConfig.EmailBuilder().build());
+        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            editTextEmail.setError("please provide valid email");
+            editTextEmail.requestFocus();
+            return;
+        }
 
-        //     Launch the activity
-         //   startActivityForResult(
-          //          AuthUI.getInstance()
-          //                  .createSignInIntentBuilder()
-          //                  .setAvailableProviders(providers)
-           //                 .setIsSmartLockEnabled(false, true)
-          //                  .build(),
-          //          RC_SIGN_IN);
-      //  }
+        if(password.length()<5){
+            editTextPassword.setError("min length should be 5 characters!");
+            editTextPassword.requestFocus();
+            return;
+        }
+
+            mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if(task.isSuccessful()){
+                        startActivity(new Intent(MainActivity2.this, Menu.class));
+                    }else{
+                        Toast.makeText(MainActivity2.this,"Failed to login!",Toast.LENGTH_LONG).show();
+                    }
+                }
+            });
+
+    }
+
 
 }
