@@ -104,7 +104,7 @@ public class Jeu2 extends AppCompatActivity {
         Random rand = new Random();
         int computerChoice; //0 = rock ; 1 = paper ; 2 = scissors ; 3 = well
         int plyChoice = Choice;//0 = rock ; 1 = paper ; 2 = scissors ; 3 = well
-        computerChoice = rand.nextInt(4);
+        computerChoice = Math.round(rand.nextInt(40)/10);
 
         countRound++;
 

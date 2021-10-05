@@ -124,7 +124,7 @@ public class Jeu3 extends AppCompatActivity {
         Random rand = new Random();
         int computerChoice; //0 = rock ; 1 = paper ; 2 = scissors ; 3 = fire ; 4 = water ; 5 = air ; 6 = sponge
         int plyChoice = Choice;//0 = rock ; 1 = paper ; 2 = scissors ; 3 = fire ; 4 = water ; 5 = air ; 6 = sponge
-        computerChoice = rand.nextInt(7);
+        computerChoice = Math.round(rand.nextInt(70)/10);
 
         countRound++;
 

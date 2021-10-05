@@ -83,6 +83,7 @@ public class Inscription extends AppCompatActivity {
 
             case R.id.btn_enregistrer:
                 registerUser();
+                finish();
                 break;
 
         }
