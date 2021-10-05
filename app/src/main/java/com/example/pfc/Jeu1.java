@@ -44,12 +44,12 @@ public class Jeu1 extends AppCompatActivity {
         ComputerChoiceImg = (ImageView) findViewById(R.id.imageViewComputerChoice);
         PlayerChoiceImg = (ImageView) findViewById(R.id.imageViewPlayerChoice);
         mainImg = (ImageView) findViewById(R.id.imageViewMain);
-        player = (TextView) findViewById(R.id.textViewPlayerGame2);
-        computer = (TextView) findViewById(R.id.textViewComputerGame2);
-        playerScore = (TextView) findViewById(R.id.textViewScorePlayerGame2);
-        computerScore = (TextView) findViewById(R.id.textViewScoreComputerGame2);
+        player = (TextView) findViewById(R.id.textViewPlayerGame1);
+        computer = (TextView) findViewById(R.id.textViewComputerGame1);
+        playerScore = (TextView) findViewById(R.id.textViewScorePlayerGame1);
+        computerScore = (TextView) findViewById(R.id.textViewScoreComputerGame1);
         round = (TextView) findViewById(R.id.textViewRoundNbr);
-        resultRound = (TextView) findViewById(R.id.textViewNbrRound);
+        resultRound = (TextView) findViewById(R.id.textViewResultRound);
         resultFinal = (TextView) findViewById(R.id.textViewResultFinal);
     }
 

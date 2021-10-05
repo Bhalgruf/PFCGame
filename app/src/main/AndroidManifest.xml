@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PFC">
         <activity
+            android:name=".Jeu3"
+            android:exported="true" />
+        <activity
             android:name=".Jeu2"
             android:exported="true" />
         <activity

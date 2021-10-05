@@ -16,8 +16,8 @@ public class Menu extends AppCompatActivity {
     Button Jeu2;
     EditText text;
 
-    Intent game1 = new Intent(Menu.this, Jeu1.class);
-    Intent game2 = new Intent(Menu.this, Jeu2.class);
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +38,11 @@ public class Menu extends AppCompatActivity {
                 finish();
                 break;
             case R.id.btn_jeu1:
+                Intent game1 = new Intent(Menu.this, Jeu1.class);
                 startActivity(game1);
                 break;
             case R.id.btn_jeu2:
+                Intent game2 = new Intent(Menu.this, Jeu2.class);
                 startActivity(game2);
                 break;
         }
