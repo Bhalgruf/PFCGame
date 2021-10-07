@@ -101,44 +101,44 @@ public class Inscription extends AppCompatActivity {
 
 
         if(!Homme.isChecked()&&!Femme.isChecked()&&!Autre.isChecked()){
-            textSexe.setError("Sexe is required!");
+            textSexe.setError("Le champ sexe est requis!");
             textSexe.requestFocus();
             return;
         }
 
 
         if(mdp.isEmpty()){
-            editText_mdp.setError("PassWord is required!");
+            editText_mdp.setError("Un mot de passe est requis!");
             editText_mdp.requestFocus();
             return;
         }
 
         if(nom.isEmpty()){
-            editText_nom.setError("LastName is required!");
+            editText_nom.setError("Votre nom est requis!");
             editText_nom.requestFocus();
             return;
         }
 
         if(prénom.isEmpty()){
-            editTextText_prénom.setError("FirstName is required!");
+            editTextText_prénom.setError("Votre prénom est requis!");
             editTextText_prénom.requestFocus();
             return;
         }
 
         if(date.isEmpty()){
-            editText_date.setError("Age is required!");
+            editText_date.setError("Votre âge est requis!");
             editText_date.requestFocus();
             return;
         }
 
         if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            editText_login.setError("please provide valid email");
+            editText_login.setError("Veuillez fournir un email correct");
             editText_login.requestFocus();
             return;
         }
 
         if(mdp.length()<5){
-            editText_mdp.setError("min length should be 5 characters!");
+            editText_mdp.setError("La taille minimum est de 5 caractères!");
             editText_mdp.requestFocus();
             return;
         }
@@ -176,7 +176,7 @@ public class Inscription extends AppCompatActivity {
                                         @Override
                                         public void onSuccess(DocumentReference documentReference) {
                                             Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                                            Toast.makeText(Inscription.this , "User has been registered successfully!", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(Inscription.this , "Enregistré avec succès!", Toast.LENGTH_SHORT).show();
                                         }
                                     })
                                     .addOnFailureListener(new OnFailureListener() {
@@ -189,7 +189,7 @@ public class Inscription extends AppCompatActivity {
                         } else {
                             // If sign in fails, display a message to the user.
                             /// Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                            Toast.makeText(Inscription.this, "Authentication failed.",
+                            Toast.makeText(Inscription.this, "Echec de l'authentification.",
                                     Toast.LENGTH_SHORT).show();
 
 
