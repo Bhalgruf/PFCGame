@@ -56,11 +56,10 @@ public class Classement extends AppCompatActivity {
     }
 
     public void GetScore() {
-        int i =1;
+
         final String[] ClassementJ = {""};
         final String[] NomJ = {""};
         final String[] ScoreJ= {""};
-
 
         db.collection("users").orderBy("score", Query.Direction.DESCENDING)
                 .get()
@@ -68,14 +67,12 @@ public class Classement extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if(task.isSuccessful()){
+                            int i=0;
                             for (QueryDocumentSnapshot documentSnapshot : Objects.requireNonNull(task.getResult())){
                                 Long userScore = documentSnapshot.getLong("score");
                                 String name= documentSnapshot.getString("first");
-                              //  ScoreJ[i]=userScore.toString();
-
                                 ClassementJ[0]= ClassementJ[0]+i+" - "+name +" : "+userScore+"\n";
-
-
+                                i++;
                             }
                             text = (TextView)findViewById(R.id.textView5);
                             text.setText(ClassementJ[0]);
