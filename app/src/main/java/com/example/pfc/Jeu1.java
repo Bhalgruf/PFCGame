@@ -263,7 +263,7 @@ public class Jeu1 extends AppCompatActivity {
                     score=score-1;
                     if(score<0){
                         score=0L;
-                    }git
+                    }
                     String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
                     db.collection("users").document(user).update("score", score);
 

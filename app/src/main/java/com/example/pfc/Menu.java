@@ -15,8 +15,7 @@ public class Menu extends AppCompatActivity {
     ImageButton jeu3;
     ImageButton btn_retour1;
     EditText text;
-
-
+    private ImageButton Class;
 
 
     @Override
@@ -28,7 +27,7 @@ public class Menu extends AppCompatActivity {
         jeu1 = findViewById(R.id.imageButtonGame1);
         jeu2 = findViewById(R.id.imageButtonGame2);
         jeu3 = findViewById(R.id.imageButtonGame3);
-        Class = (Button) findViewById(R.id.btn_class);
+        Class = findViewById(R.id.btn_class);
 
 
     }
