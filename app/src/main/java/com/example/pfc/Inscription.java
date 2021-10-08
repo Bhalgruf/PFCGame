@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -44,7 +45,8 @@ public class Inscription extends AppCompatActivity {
     private FirebaseAuth mAuth;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    Button btn_retour;
+    ImageButton btn_retour;
+    ImageButton enregistrer;
     String TAG="BddInfo";
 
 
@@ -52,7 +54,7 @@ public class Inscription extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inscription);
-        btn_retour =(Button)findViewById(R.id.btn_retour2);
+        btn_retour =findViewById(R.id.btn_retour2);
         mAuth = FirebaseAuth.getInstance();
 
         editText_nom=(EditText) findViewById(R.id.editText_nom);
@@ -62,7 +64,7 @@ public class Inscription extends AppCompatActivity {
         editText_mdp=(EditText) findViewById(R.id.editText_mdp);
         textSexe= (TextView) findViewById(R.id.textView_sexe);
         sexe=(RadioGroup) findViewById(R.id.radiog);
-        btn_enregistrer=(Button) findViewById(R.id.btn_enregistrer);
+        enregistrer= findViewById(R.id.btn_enregistrer);
         Homme =(RadioButton) findViewById(R.id.radioButton_H);
         Femme =(RadioButton) findViewById(R.id.radioButton_F);
         Autre =(RadioButton) findViewById(R.id.radioButton_autre);
@@ -83,6 +85,7 @@ public class Inscription extends AppCompatActivity {
 
             case R.id.btn_enregistrer:
                 registerUser();
+                finish();
                 break;
 
         }
@@ -100,44 +103,44 @@ public class Inscription extends AppCompatActivity {
 
 
         if(!Homme.isChecked()&&!Femme.isChecked()&&!Autre.isChecked()){
-            textSexe.setError("Sexe is required!");
+            textSexe.setError("Le champ sexe est requis!");
             textSexe.requestFocus();
             return;
         }
 
 
         if(mdp.isEmpty()){
-            editText_mdp.setError("PassWord is required!");
+            editText_mdp.setError("Un mot de passe est requis!");
             editText_mdp.requestFocus();
             return;
         }
 
         if(nom.isEmpty()){
-            editText_nom.setError("LastName is required!");
+            editText_nom.setError("Votre nom est requis!");
             editText_nom.requestFocus();
             return;
         }
 
         if(prénom.isEmpty()){
-            editTextText_prénom.setError("FirstName is required!");
+            editTextText_prénom.setError("Votre prénom est requis!");
             editTextText_prénom.requestFocus();
             return;
         }
 
         if(date.isEmpty()){
-            editText_date.setError("Age is required!");
+            editText_date.setError("Votre âge est requis!");
             editText_date.requestFocus();
             return;
         }
 
         if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            editText_login.setError("please provide valid email");
+            editText_login.setError("Veuillez fournir un email correct");
             editText_login.requestFocus();
             return;
         }
 
         if(mdp.length()<5){
-            editText_mdp.setError("min length should be 5 characters!");
+            editText_mdp.setError("La taille minimum est de 5 caractères!");
             editText_mdp.requestFocus();
             return;
         }
@@ -176,7 +179,7 @@ public class Inscription extends AppCompatActivity {
                                         @Override
                                         public void onSuccess(Void avoid) {
                                            // Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                                            Toast.makeText(Inscription.this , "User has been registered successfully!", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(Inscription.this , "Enregistré avec succès!", Toast.LENGTH_SHORT).show();
                                         }
                                     })
                                     .addOnFailureListener(new OnFailureListener() {
@@ -189,7 +192,7 @@ public class Inscription extends AppCompatActivity {
                         } else {
                             // If sign in fails, display a message to the user.
                             /// Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                            Toast.makeText(Inscription.this, "Authentication failed.",
+                            Toast.makeText(Inscription.this, "Echec de l'authentification.",
                                     Toast.LENGTH_SHORT).show();
 
 

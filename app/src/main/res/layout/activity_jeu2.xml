@@ -4,7 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#d3c7a2"
     tools:context=".Jeu2">
+
+    <ImageButton
+        android:id="@+id/buttonAgain2"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:background="@null"
+        android:onClick="onClickGame2"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.541"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline23"
+        app:srcCompat="@drawable/again" />
+
+    <ImageView
+        android:id="@+id/imageViewScorePlayerGame2"
+        android:layout_width="49dp"
+        android:layout_height="51dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline20"
+        app:layout_constraintEnd_toStartOf="@+id/guideline19"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPlayerGame2"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/imageViewScoreComputerGame2"
+        android:layout_width="49dp"
+        android:layout_height="51dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline20"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline19"
+        app:layout_constraintTop_toBottomOf="@+id/textViewComputerGame2"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/imageViewRoundGame2"
+        android:layout_width="49dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewRound2"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline19"
@@ -18,84 +63,41 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.25" />
-
-    <Button
-        android:id="@+id/button_quitter2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onClickGame2"
-        android:text="QUITTER"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintGuide_percent="0.21" />
 
     <TextView
         android:id="@+id/textViewRound2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Round"
+        android:text="Manche"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textViewNbrRound"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:text="0"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/textViewRound2"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textViewPlayerGame2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Player"
+        android:text="Joueur"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline20"
         app:layout_constraintEnd_toStartOf="@+id/guideline19"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textViewScorePlayerGame2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline20"
-        app:layout_constraintEnd_toStartOf="@+id/guideline19"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewPlayerGame2" />
 
     <TextView
         android:id="@+id/textViewComputerGame2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Computer"
+        android:text="Ordinateur"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline20"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline19"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textViewScoreComputerGame2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline20"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline19"
-        app:layout_constraintTop_toBottomOf="@+id/textViewComputerGame2" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline23"
@@ -103,7 +105,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintGuide_percent="0.75"
+        app:layout_constraintGuide_percent="0.71"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
@@ -115,6 +117,7 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.436"
         app:srcCompat="@drawable/rpsw_rules" />
 
     <ImageView
@@ -139,7 +142,7 @@
         android:id="@+id/imageButtonRock2"
         android:layout_width="120dp"
         android:layout_height="98dp"
-        android:backgroundTint="@color/white"
+        android:background="@null"
         android:onClick="onClickGame2"
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toStartOf="@+id/guideline19"
@@ -152,7 +155,7 @@
         android:id="@+id/imageButtonPaper2"
         android:layout_width="123dp"
         android:layout_height="94dp"
-        android:backgroundTint="@color/white"
+        android:background="@null"
         android:onClick="onClickGame2"
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
@@ -162,39 +165,46 @@
 
     <ImageButton
         android:id="@+id/imageButtonScissors2"
-        android:layout_width="90dp"
-        android:layout_height="102dp"
-        android:backgroundTint="@color/white"
+        android:layout_width="92dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="8dp"
+        android:background="@null"
         android:onClick="onClickGame2"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline19"
+        app:layout_constraintHorizontal_bias="0.446"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButtonRock2"
         app:srcCompat="@drawable/scissors" />
 
     <ImageButton
         android:id="@+id/imageButtonWell"
-        android:layout_width="108dp"
-        android:layout_height="101dp"
-        android:backgroundTint="@color/white"
+        android:layout_width="103dp"
+        android:layout_height="95dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:background="@null"
         android:onClick="onClickGame2"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.515"
         app:layout_constraintStart_toStartOf="@+id/guideline19"
+        app:layout_constraintTop_toBottomOf="@+id/imageButtonPaper2"
         app:srcCompat="@drawable/well" />
 
     <TextView
         android:id="@+id/textViewResultRound2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="32dp"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/imageViewPlayerChoice2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewComputerChoice2" />
 
     <TextView
         android:id="@+id/textViewResultFinal2"
@@ -202,9 +212,20 @@
         android:layout_height="wrap_content"
         android:textSize="34sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/guideline23"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/button_quitter2"
+        android:layout_width="123dp"
+        android:layout_height="40dp"
+        android:background="@null"
+        android:onClick="onClickGame2"
+        android:scaleType="fitXY"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline23" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/retour" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

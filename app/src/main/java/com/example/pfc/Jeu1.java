@@ -3,6 +3,7 @@ package com.example.pfc;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -28,7 +29,8 @@ import java.util.Random;
 
 public class Jeu1 extends AppCompatActivity {
 
-    public Button quitter;
+    public ImageButton quitter;
+    public ImageButton again;
     public ImageView ComputerChoiceImg;
     public ImageView PlayerChoiceImg;
     public ImageView mainImg;
@@ -37,9 +39,9 @@ public class Jeu1 extends AppCompatActivity {
     public ImageButton scissorsImg;
     public TextView player;
     public TextView computer;
-    public TextView playerScore;
-    public TextView computerScore;
-    public TextView round;
+    public ImageView playerScore;
+    public ImageView computerScore;
+    public ImageView round;
     public TextView resultRound;
     public TextView resultFinal;
 
@@ -56,7 +58,8 @@ public class Jeu1 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jeu1);
-        quitter =(Button)findViewById(R.id.btn_quitter);
+        quitter =findViewById(R.id.btn_quitter);
+        again =  findViewById(R.id.buttonAgain1);
         rockImg = (ImageButton) findViewById(R.id.imageButtonRock);
         paperImg = (ImageButton) findViewById(R.id.imageButtonPaper);
         scissorsImg = (ImageButton) findViewById(R.id.imageButtonScissors);
@@ -65,13 +68,15 @@ public class Jeu1 extends AppCompatActivity {
         mainImg = (ImageView) findViewById(R.id.imageViewMain);
         player = (TextView) findViewById(R.id.textViewPlayerGame1);
         computer = (TextView) findViewById(R.id.textViewComputerGame1);
-        playerScore = (TextView) findViewById(R.id.textViewScorePlayerGame1);
-        computerScore = (TextView) findViewById(R.id.textViewScoreComputerGame1);
-        round = (TextView) findViewById(R.id.textViewRoundNbr);
+        playerScore =  findViewById(R.id.imageViewScorePlayerGame1);
+        computerScore = findViewById(R.id.imageViewScoreComputerGame1);
+        round =  findViewById(R.id.imageViewRoundGame1);
         resultRound = (TextView) findViewById(R.id.textViewResultRound);
         resultFinal = (TextView) findViewById(R.id.textViewResultFinal);
 
         mAuth = FirebaseAuth.getInstance();
+
+        again.setVisibility(View.INVISIBLE);
     }
 
 
@@ -82,6 +87,11 @@ public class Jeu1 extends AppCompatActivity {
         switch (view.getId()){
             case R.id.btn_quitter:
                 finish();
+                break;
+            case R.id.buttonAgain1:
+                Intent restart = getIntent();
+                finish();
+                startActivity(restart);
                 break;
             case R.id.imageButtonRock:
                 PlayerChoiceImg.setImageResource(R.drawable.rock);
@@ -109,7 +119,7 @@ public class Jeu1 extends AppCompatActivity {
         Random rand = new Random();
         int computerChoice; //0 = rock ; 1 = paper ; 2 = scissors
         int plyChoice = Choice;//0 = rock ; 1 = paper ; 2 = scissors
-        computerChoice = rand.nextInt(3);
+        computerChoice = Math.round(rand.nextInt(30)/10);
 
         countRound++;
 
@@ -127,45 +137,44 @@ public class Jeu1 extends AppCompatActivity {
 
         if(plyChoice==computerChoice){
             //Tie
-            resultRound.setText("Tie !");
+            resultRound.setText("Egalité !");
             countRound--;
         }else{
 
             if(plyChoice==0 && computerChoice==1){
-                resultRound.setText("Computer Won !");
+                resultRound.setText("L'Ordinateur gagne la manche !");
                 scoreComputer++;
             }else if(plyChoice==0 && computerChoice==2){
-                resultRound.setText("Player Won !");
+                resultRound.setText("Vous gagnez la manche !");
                 scorePlayer++;
             }
 
             if(plyChoice==1 && computerChoice== 2){
-                resultRound.setText("Computer Won !");
+                resultRound.setText("L'Ordinateur gagne la manche !");
                 scoreComputer++;
             }else if(plyChoice ==1 && computerChoice==0 ){
-                resultRound.setText("Player Won !");
+                resultRound.setText("Vous gagnez la manche !");
                 scorePlayer++;
             }
 
             if(plyChoice==2 && computerChoice == 0){
-                resultRound.setText("Computer Won !");
+                resultRound.setText("L'Ordinateur gagne la manche !");
                 scoreComputer++;
             }else if(plyChoice==2 && computerChoice==1){
-                resultRound.setText("Player Won !");
+                resultRound.setText("Vous gagnez la manche !");
                 scorePlayer++;
             }
         }
 
         if(scorePlayer==3 || scoreComputer==3){
 
-            resultRound.setText("Game Over");
+            resultRound.setText("Fin de la partie");
             if(scorePlayer==3){
-                resultFinal.setText("Player Won !");
+                resultFinal.setText("Vous avez gagné !");
                 UptScore();
 
-
             }else{
-                resultFinal.setText("Computer Won !");
+                resultFinal.setText("Vous avez perdu !");
                 Upt1Score();
             }
 
@@ -174,11 +183,39 @@ public class Jeu1 extends AppCompatActivity {
             rockImg.setVisibility(View.INVISIBLE);
             paperImg.setVisibility(View.INVISIBLE);
             scissorsImg.setVisibility(View.INVISIBLE);
+
+            again.setVisibility(View.VISIBLE);
         }
 
-        playerScore.setText(String.valueOf(scorePlayer));
-        computerScore.setText(String.valueOf(scoreComputer));
-        round.setText(String.valueOf(countRound));
+        if(scorePlayer == 1){
+            playerScore.setImageResource(R.drawable.onepoint);
+        }else if (scorePlayer == 2){
+            playerScore.setImageResource(R.drawable.twopoints);
+        }else if (scorePlayer == 3){
+            playerScore.setImageResource(R.drawable.threepoints);
+        }
+
+        if(scoreComputer == 1){
+            computerScore.setImageResource(R.drawable.onepoint);
+        }else if (scoreComputer == 2){
+            computerScore.setImageResource(R.drawable.twopoints);
+        }else if (scoreComputer == 3){
+            computerScore.setImageResource(R.drawable.threepoints);
+        }
+
+        if(countRound == 1){
+            round.setImageResource(R.drawable.onepoint);
+        }else if (countRound == 2){
+            round.setImageResource(R.drawable.twopoints);
+        }else if (countRound == 3){
+            round.setImageResource(R.drawable.threepoints);
+        }else if (countRound == 4){
+            round.setImageResource(R.drawable.fourpoints);
+        }else if (countRound == 5){
+            round.setImageResource(R.drawable.fivepoints);
+        }
+
+
 
     }
 

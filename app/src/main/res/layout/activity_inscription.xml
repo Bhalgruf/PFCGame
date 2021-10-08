@@ -4,7 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#d3c7a2"
     tools:context=".Inscription">
+
+    <ImageButton
+        android:id="@+id/btn_retour2"
+        android:layout_width="123dp"
+        android:layout_height="40dp"
+        android:background="@null"
+        android:onClick="onClickMain"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/retour" />
 
     <RadioGroup
         android:id="@+id/radiog"
@@ -64,15 +76,6 @@
         app:layout_constraintBaseline_toBaselineOf="@+id/editTextText_prénom"
         app:layout_constraintEnd_toStartOf="@+id/guideline9"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btn_retour2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onClickMain"
-        android:text="Retour"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editText_nom"
@@ -135,17 +138,6 @@
         app:layout_constraintBaseline_toBaselineOf="@+id/editText_mdp"
         app:layout_constraintEnd_toStartOf="@+id/guideline9"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btn_enregistrer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onClickMain"
-        android:text="Enregistrer"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline11" />
 
     <EditText
         android:id="@+id/editText_date"
@@ -230,5 +222,17 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="94dp" />
+
+    <ImageButton
+        android:id="@+id/btn_enregistrer"
+        android:layout_width="232dp"
+        android:layout_height="67dp"
+        android:background="@null"
+        android:onClick="onClickMain"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline9"
+        app:layout_constraintTop_toTopOf="@+id/guideline11"
+        app:srcCompat="@drawable/enregistrer" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
