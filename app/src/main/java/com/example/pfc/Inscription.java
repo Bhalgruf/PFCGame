@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -44,7 +45,7 @@ public class Inscription extends AppCompatActivity {
     private FirebaseAuth mAuth;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    Button btn_retour;
+    ImageButton btn_retour;
     String TAG="BddInfo";
 
 
@@ -52,7 +53,7 @@ public class Inscription extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inscription);
-        btn_retour =(Button)findViewById(R.id.btn_retour2);
+        btn_retour =findViewById(R.id.btn_retour2);
         mAuth = FirebaseAuth.getInstance();
 
         editText_nom=(EditText) findViewById(R.id.editText_nom);
