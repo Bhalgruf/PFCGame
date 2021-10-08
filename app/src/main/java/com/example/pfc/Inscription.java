@@ -46,6 +46,7 @@ public class Inscription extends AppCompatActivity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     ImageButton btn_retour;
+    ImageButton enregistrer;
     String TAG="BddInfo";
 
 
@@ -63,7 +64,7 @@ public class Inscription extends AppCompatActivity {
         editText_mdp=(EditText) findViewById(R.id.editText_mdp);
         textSexe= (TextView) findViewById(R.id.textView_sexe);
         sexe=(RadioGroup) findViewById(R.id.radiog);
-        btn_enregistrer=(Button) findViewById(R.id.btn_enregistrer);
+        enregistrer= findViewById(R.id.btn_enregistrer);
         Homme =(RadioButton) findViewById(R.id.radioButton_H);
         Femme =(RadioButton) findViewById(R.id.radioButton_F);
         Autre =(RadioButton) findViewById(R.id.radioButton_autre);

@@ -8,6 +8,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,7 +21,8 @@ public class MainActivity2 extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
     private static final int RC_SIGN_IN = 123;
-    Button btn_con;
+    ImageButton btn_con;
+    ImageButton btn_ins;
     EditText editTextEmail,editTextPassword;
 
 
@@ -29,7 +31,8 @@ public class MainActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        btn_con =(Button)findViewById(R.id.btn_co);
+        btn_con =findViewById(R.id.imageButtonConnexion);
+        btn_ins = findViewById(R.id.btn_ins);
         editTextEmail = (EditText) findViewById(R.id.email);
         editTextPassword = (EditText) findViewById(R.id.Password);
         mAuth = FirebaseAuth.getInstance();
@@ -39,7 +42,7 @@ public class MainActivity2 extends AppCompatActivity {
 
     public void onClickMain(View view) {
         switch (view.getId()){
-            case R.id.btn_co:
+            case R.id.imageButtonConnexion:
                 startSignInActivity();
                 break;
 

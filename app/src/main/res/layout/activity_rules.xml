@@ -7,6 +7,17 @@
     android:background="#d3c7a2"
     tools:context=".Rules">
 
+    <ImageButton
+        android:id="@+id/buttonRetourRules"
+        android:layout_width="123dp"
+        android:layout_height="40dp"
+        android:background="@null"
+        android:onClick="onClick"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/retour" />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="399dp"
@@ -15,15 +26,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/rules_7" />
-
-    <Button
-        android:id="@+id/buttonRetourRules"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onClick"
-        android:text="Retour"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
         android:layout_width="wrap_content"

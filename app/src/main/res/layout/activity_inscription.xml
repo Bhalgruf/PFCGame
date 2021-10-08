@@ -139,17 +139,6 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline9"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/btn_enregistrer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onClickMain"
-        android:text="Enregistrer"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline11" />
-
     <EditText
         android:id="@+id/editText_date"
         android:layout_width="wrap_content"
@@ -233,5 +222,17 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="94dp" />
+
+    <ImageButton
+        android:id="@+id/btn_enregistrer"
+        android:layout_width="232dp"
+        android:layout_height="67dp"
+        android:background="@null"
+        android:onClick="onClickMain"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline9"
+        app:layout_constraintTop_toTopOf="@+id/guideline11"
+        app:srcCompat="@drawable/enregistrer" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -31,6 +31,7 @@ public class Jeu3 extends AppCompatActivity {
     public ImageView playerScore;
     public ImageView computerScore;
     public ImageView round;
+    public ImageView mainImg;
     public TextView resultRound;
     public TextView resultFinal;
 
@@ -62,6 +63,7 @@ public class Jeu3 extends AppCompatActivity {
         round =  findViewById(R.id.imageViewRoundNbr3);
         resultRound = (TextView) findViewById(R.id.textViewResultRoundLabel);
         resultFinal = (TextView) findViewById(R.id.textViewResultFinal3);
+        mainImg = findViewById(R.id.imageViewMainGame3);
 
         again.setVisibility(View.INVISIBLE);
     }
@@ -85,36 +87,43 @@ public class Jeu3 extends AppCompatActivity {
                 break;
             case R.id.buttonRock3:
                 PlayerChoiceImg.setImageResource(R.drawable.rock);
+                mainImg.setVisibility(View.INVISIBLE);
                 playerChoice = 0;
                 checkGame3(view, playerChoice);
                 break;
             case R.id.buttonPaper3:
                 PlayerChoiceImg.setImageResource(R.drawable.paper);
+                mainImg.setVisibility(View.INVISIBLE);
                 playerChoice = 1;
                 checkGame3(view, playerChoice);
                 break;
             case R.id.buttonScissors3:
                 PlayerChoiceImg.setImageResource(R.drawable.scissors);
+                mainImg.setVisibility(View.INVISIBLE);
                 playerChoice = 2;
                 checkGame3(view, playerChoice);
                 break;
             case R.id.buttonFire:
                 PlayerChoiceImg.setImageResource(R.drawable.fire);
+                mainImg.setVisibility(View.INVISIBLE);
                 playerChoice = 3;
                 checkGame3(view, playerChoice);
                 break;
             case R.id.buttonWater:
                 PlayerChoiceImg.setImageResource(R.drawable.water);
+                mainImg.setVisibility(View.INVISIBLE);
                 playerChoice = 4;
                 checkGame3(view,playerChoice);
                 break;
             case R.id.buttonAir:
                 PlayerChoiceImg.setImageResource(R.drawable.air);
+                mainImg.setVisibility(View.INVISIBLE);
                 playerChoice = 5;
                 checkGame3(view,playerChoice);
                 break;
             case R.id.buttonSponge:
                 PlayerChoiceImg.setImageResource(R.drawable.sponge);
+                mainImg.setVisibility(View.INVISIBLE);
                 playerChoice = 6;
                 checkGame3(view,playerChoice);
                 break;

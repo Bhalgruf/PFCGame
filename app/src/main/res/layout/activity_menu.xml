@@ -8,17 +8,6 @@
     android:backgroundTint="#d3c7a2"
     tools:context=".Menu">
 
-    <Button
-        android:id="@+id/btn_jeu3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onClickMenu"
-        android:text="7 élèments"
-        app:layout_constraintBottom_toTopOf="@+id/guideline8"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline7" />
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline6"
         android:layout_width="wrap_content"
@@ -88,5 +77,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline8"
         app:srcCompat="@drawable/classement" />
+
+    <ImageButton
+        android:id="@+id/imageButtonGame3"
+        android:layout_width="359dp"
+        android:layout_height="94dp"
+        android:background="@null"
+        android:onClick="onClickMenu"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toTopOf="@+id/guideline8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline7"
+        app:srcCompat="@drawable/game3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

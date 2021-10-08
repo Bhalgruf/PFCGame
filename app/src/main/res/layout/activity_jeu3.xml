@@ -268,4 +268,14 @@
       app:layout_constraintTop_toTopOf="parent"
       app:srcCompat="@drawable/rules" />
 
+  <ImageView
+      android:id="@+id/imageViewMainGame3"
+      android:layout_width="374dp"
+      android:layout_height="153dp"
+      app:layout_constraintBottom_toTopOf="@+id/guideline27"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/guideline25"
+      app:srcCompat="@drawable/game3" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

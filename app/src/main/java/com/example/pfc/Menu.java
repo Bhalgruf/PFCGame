@@ -5,11 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-
-import com.google.firebase.auth.FirebaseAuth;
 
 public class Menu extends AppCompatActivity {
 
@@ -30,6 +27,7 @@ public class Menu extends AppCompatActivity {
         btn_retour1 =  findViewById(R.id.btn_retour1);
         jeu1 = findViewById(R.id.imageButtonGame1);
         jeu2 = findViewById(R.id.imageButtonGame2);
+        jeu3 = findViewById(R.id.imageButtonGame3);
 
 
     }
@@ -48,7 +46,7 @@ public class Menu extends AppCompatActivity {
                 Intent game2 = new Intent(Menu.this, Jeu2.class);
                 startActivity(game2);
                 break;
-            case R.id.btn_jeu3:
+            case R.id.imageButtonGame3:
                 Intent game3 = new Intent(Menu.this, Jeu3.class);
                 startActivity(game3);
                 break;
