@@ -40,7 +40,6 @@ public class Classement extends AppCompatActivity {
         setContentView(R.layout.activity_classement);
         Retour = (Button) findViewById(R.id.btn_retourMenu);
         GetScore();
-        text = (EditText) findViewById(R.id.editTextTextMultiLine);
 
     }
 
@@ -72,7 +71,7 @@ public class Classement extends AppCompatActivity {
                         }
                     }
                 });
-
+        text = (EditText) findViewById(R.id.editTextTextMultiLine);
         text.setText(ClassementJ[0]);
     }
 }
