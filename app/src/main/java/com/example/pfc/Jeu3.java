@@ -1,18 +1,29 @@
 package com.example.pfc;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.Random;
 
 public class Jeu3 extends AppCompatActivity {
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    String TAG="BddInfo";
 
     public ImageButton quitter;
     public ImageButton again;
@@ -231,8 +242,10 @@ public class Jeu3 extends AppCompatActivity {
             resultRound.setText("Fin de la partie");
             if (scorePlayer == 3) {
                 resultFinal.setText("Vous avez gagné !");
+                UptScore();
             } else {
                 resultFinal.setText("Vous avez perdu !");
+                Upt1Score();
             }
 
             ComputerChoiceImg.setVisibility(View.INVISIBLE);
@@ -276,6 +289,66 @@ public class Jeu3 extends AppCompatActivity {
             round.setImageResource(R.drawable.fivepoints);
         }
 
+
+    }
+
+    public void UptScore() {
+
+        FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
+        String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DocumentReference DocRef =rootRef.collection("users").document(user);
+        DocRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+
+
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    Long userScore = document.getLong("score");
+                    Long score = userScore;
+                    score=score+8;
+                    if(score<0){
+                        score=0L;
+                    }
+                    String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                    db.collection("users").document(user).update("score", score);
+
+                } else{
+                    Log.w(TAG, "Error adding document !!!!!!!!!!!!!!!");
+
+                }
+            }
+        });
+
+    }
+
+    public void Upt1Score() {
+
+        FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
+        String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DocumentReference DocRef =rootRef.collection("users").document(user);
+        DocRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+
+
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    Long userScore = document.getLong("score");
+                    Long score = userScore;
+                    score=score-3;
+                    if(score<0){
+                        score=0L;
+                    }
+                    String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                    db.collection("users").document(user).update("score", score);
+
+                } else{
+                    Log.w(TAG, "Error adding document !!!!!!!!!!!!!!!");
+
+                }
+            }
+        });
 
     }
 }

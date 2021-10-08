@@ -67,7 +67,7 @@ public class Classement extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if(task.isSuccessful()){
-                            int i=0;
+                            int i=1;
                             for (QueryDocumentSnapshot documentSnapshot : Objects.requireNonNull(task.getResult())){
                                 Long userScore = documentSnapshot.getLong("score");
                                 String name= documentSnapshot.getString("first");
