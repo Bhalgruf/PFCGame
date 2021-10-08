@@ -11,9 +11,7 @@ import android.widget.EditText;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Menu extends AppCompatActivity {
-    Button btn_retour1;
-    Button Jeu1;
-    Button Jeu2;
+    Button btn_retour1,Jeu1,Jeu2,Class;
     EditText text;
 
 
@@ -27,6 +25,7 @@ public class Menu extends AppCompatActivity {
         btn_retour1 = (Button) findViewById(R.id.btn_retour1);
         Jeu1 = (Button) findViewById(R.id.btn_jeu1);
         Jeu2 = (Button) findViewById(R.id.btn_jeu2);
+        Class = (Button) findViewById(R.id.btn_class);
 
 
     }
@@ -44,6 +43,10 @@ public class Menu extends AppCompatActivity {
             case R.id.btn_jeu2:
                 Intent game2 = new Intent(Menu.this, Jeu2.class);
                 startActivity(game2);
+                break;
+            case R.id.btn_class:
+                Intent Class = new Intent(Menu.this, Classement.class);
+                startActivity(Class);
                 break;
         }
     }

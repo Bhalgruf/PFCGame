@@ -166,15 +166,16 @@ public class Inscription extends AppCompatActivity {
                             user.put("last", nom);
                             user.put("email",email);
                             user.put("date",date);
-                            user.put("score","0");
+                            user.put("score",0);
 
-
-                            db.collection("users")
-                                    .add(user)
-                                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                            String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                            db.collection("users").document(userId)
+                                    .set(user)
+                                    //addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
-                                        public void onSuccess(DocumentReference documentReference) {
-                                            Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                                        public void onSuccess(Void avoid) {
+                                           // Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
                                             Toast.makeText(Inscription.this , "User has been registered successfully!", Toast.LENGTH_SHORT).show();
                                         }
                                     })

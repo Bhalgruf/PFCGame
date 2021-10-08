@@ -1,16 +1,30 @@
 package com.example.pfc;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
 public class Jeu1 extends AppCompatActivity {
 
@@ -29,9 +43,14 @@ public class Jeu1 extends AppCompatActivity {
     public TextView resultRound;
     public TextView resultFinal;
 
+    private Long score = 0L;
     public int countRound;
     public int scorePlayer;
     public int scoreComputer;
+
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private FirebaseAuth mAuth;
+    String TAG="BddInfo";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +70,8 @@ public class Jeu1 extends AppCompatActivity {
         round = (TextView) findViewById(R.id.textViewRoundNbr);
         resultRound = (TextView) findViewById(R.id.textViewResultRound);
         resultFinal = (TextView) findViewById(R.id.textViewResultFinal);
+
+        mAuth = FirebaseAuth.getInstance();
     }
 
 
@@ -84,6 +105,7 @@ public class Jeu1 extends AppCompatActivity {
     }
 
     public void checkGame(View view, int Choice){
+
         Random rand = new Random();
         int computerChoice; //0 = rock ; 1 = paper ; 2 = scissors
         int plyChoice = Choice;//0 = rock ; 1 = paper ; 2 = scissors
@@ -139,8 +161,12 @@ public class Jeu1 extends AppCompatActivity {
             resultRound.setText("Game Over");
             if(scorePlayer==3){
                 resultFinal.setText("Player Won !");
+                UptScore();
+
+
             }else{
                 resultFinal.setText("Computer Won !");
+                Upt1Score();
             }
 
             ComputerChoiceImg.setVisibility(View.INVISIBLE);
@@ -155,6 +181,63 @@ public class Jeu1 extends AppCompatActivity {
         round.setText(String.valueOf(countRound));
 
     }
+
+    public void UptScore() {
+
+        FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
+        String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DocumentReference DocRef =rootRef.collection("users").document(user);
+        DocRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+
+
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                        Long userScore = document.getLong("score");
+                        score=userScore;
+                    score=score+3;
+                    String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                    db.collection("users").document(user).update("score", score);
+
+                } else{
+                    Log.w(TAG, "Error adding document !!!!!!!!!!!!!!!");
+
+                }
+            }
+        });
+
+    }
+
+    public void Upt1Score() {
+
+        FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
+        String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DocumentReference DocRef =rootRef.collection("users").document(user);
+        DocRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+
+
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    Long userScore = document.getLong("score");
+                    score=userScore;
+                    score=score-1;
+                    String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                    db.collection("users").document(user).update("score", score);
+
+                } else{
+                    Log.w(TAG, "Error adding document !!!!!!!!!!!!!!!");
+
+                }
+            }
+        });
+
+    }
+
+
+
 
 
 

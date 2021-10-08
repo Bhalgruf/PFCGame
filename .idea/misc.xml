@@ -3,8 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/PapaOurs/AndroidStudioProjects/PFCGame/app/src/main/res/layout/activity_classement.xml" value="0.25" />
         <entry key="..\:/Users/PapaOurs/AndroidStudioProjects/PFCGame/app/src/main/res/layout/activity_inscription.xml" value="0.33" />
+        <entry key="..\:/Users/PapaOurs/AndroidStudioProjects/PFCGame/app/src/main/res/layout/activity_jeu1.xml" value="0.1921875" />
         <entry key="..\:/Users/PapaOurs/AndroidStudioProjects/PFCGame/app/src/main/res/layout/activity_main2.xml" value="0.1921875" />
+        <entry key="..\:/Users/PapaOurs/AndroidStudioProjects/PFCGame/app/src/main/res/layout/activity_menu.xml" value="0.1921875" />
         <entry key="..\:/Users/maxaud/OneDrive - Assa Abloy Inc/Bureau/TP_ANdroid/Game/app/src/main/res/layout/activity_jeu1.xml" value="0.33" />
         <entry key="..\:/Users/maxaud/OneDrive - Assa Abloy Inc/Bureau/TP_ANdroid/Game/app/src/main/res/layout/activity_jeu2.xml" value="0.3625" />
         <entry key="..\:/Users/maxaud/OneDrive - Assa Abloy Inc/Bureau/TP_ANdroid/Game/app/src/main/res/layout/activity_main.xml" value="0.20520833333333333" />
