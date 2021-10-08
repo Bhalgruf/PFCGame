@@ -116,8 +116,8 @@
 
     <ImageButton
         android:id="@+id/imageButtonPaper"
-        android:layout_width="142dp"
-        android:layout_height="135dp"
+        android:layout_width="128dp"
+        android:layout_height="123dp"
         android:background="@null"
         android:backgroundTint="@color/white"
         android:onClick="onClickGame1"
