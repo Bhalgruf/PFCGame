@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -27,18 +28,19 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.List;
 import java.util.Objects;
+import android.widget.ImageButton;
 
 public class Classement extends AppCompatActivity {
 
-    private Button Retour;
+   public ImageButton Retour;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private EditText text;
+    private TextView text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_classement);
-        Retour = (Button) findViewById(R.id.btn_retourMenu);
+        Retour = findViewById(R.id.btn_retourClassement);
         GetScore();
 
     }
@@ -46,7 +48,7 @@ public class Classement extends AppCompatActivity {
     public void onClickClassement(View view) {
 
         switch (view.getId()) {
-            case R.id.btn_retourMenu:
+            case R.id.btn_retourClassement:
                 Intent Menu = new Intent(Classement.this, Menu.class);
                 startActivity(Menu);
                 break;
@@ -56,6 +58,9 @@ public class Classement extends AppCompatActivity {
     public void GetScore() {
         int i =1;
         final String[] ClassementJ = {""};
+        final String[] NomJ = {""};
+        final String[] ScoreJ= {""};
+
 
         db.collection("users").orderBy("score", Query.Direction.DESCENDING)
                 .get()
@@ -66,12 +71,17 @@ public class Classement extends AppCompatActivity {
                             for (QueryDocumentSnapshot documentSnapshot : Objects.requireNonNull(task.getResult())){
                                 Long userScore = documentSnapshot.getLong("score");
                                 String name= documentSnapshot.getString("first");
-                                ClassementJ[0]= ClassementJ[0]+i+" - "+name +" : "+ userScore +"\n";
+                              //  ScoreJ[i]=userScore.toString();
+
+                                ClassementJ[0]= ClassementJ[0]+i+" - "+name +" : "+userScore+"\n";
+
+
                             }
+                            text = (TextView)findViewById(R.id.textView5);
+                            text.setText(ClassementJ[0]);
                         }
                     }
                 });
-        text = (EditText) findViewById(R.id.editTextTextMultiLine);
-        text.setText(ClassementJ[0]);
+
     }
 }
