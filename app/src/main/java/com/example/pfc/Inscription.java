@@ -114,14 +114,14 @@ public class Inscription extends AppCompatActivity {
 
 
 
-        if(!Homme.isChecked()&&!Femme.isChecked()&&!Autre.isChecked()){
+        if(!Homme.isChecked()&&!Femme.isChecked()&&!Autre.isChecked()){ // si une des cases a été saisie
             textSexe.setError("Le champ sexe est requis!");
             textSexe.requestFocus();
             return;
         }
 
 
-        if(mdp.isEmpty()){
+        if(mdp.isEmpty()){ // vérification si les champs ne sont pas vide
             editText_mdp.setError("Un mot de passe est requis!");
             editText_mdp.requestFocus();
             return;
@@ -145,13 +145,13 @@ public class Inscription extends AppCompatActivity {
             return;
         }
 
-        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){ // vérifie qu'une adresse mail "correcte" (avec un @ et un .com) a été saisie
             editText_login.setError("Veuillez fournir un email correct");
             editText_login.requestFocus();
             return;
         }
 
-        if(mdp.length()<5){
+        if(mdp.length()<5){ // mot de passe d'une longueur minimal de 5 charactères
             editText_mdp.setError("La taille minimum est de 5 caractères!");
             editText_mdp.requestFocus();
             return;
@@ -177,13 +177,13 @@ public class Inscription extends AppCompatActivity {
                             if(Autre.isChecked()){
                                 user.put("sexe","Autre");
                             }
-                            user.put("first",prénom);
+                            user.put("first",prénom); // string
                             user.put("last", nom);
                             user.put("email",email);
                             user.put("date",date);
-                            user.put("score",0);
+                            user.put("score",0); // int
 
-                            String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                            String userId = FirebaseAuth.getInstance().getCurrentUser().getUid(); // le document a le même id que son compte utilisateur associé
                             db.collection("users").document(userId)
                                     .set(user)
                                     //addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -197,7 +197,7 @@ public class Inscription extends AppCompatActivity {
                                     .addOnFailureListener(new OnFailureListener() {
                                         @Override
                                         public void onFailure(@NonNull Exception e) {
-                                            Log.w(TAG, "Error adding document", e);
+                                            Log.w(TAG, "Error adding document", e); // affichage de l'échec
                                         }
                                     });
 

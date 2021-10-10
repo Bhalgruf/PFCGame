@@ -80,7 +80,7 @@ public class Jeu1 extends AppCompatActivity {
     }
 
 
-    public void onClickGame1(View view){
+    public void onClickGame1(View view){ // utilisation d'un switch case pour tout les boutons de l'activité.
 
         int playerChoice;//0 = rock ; 1 = paper ; 2 = scissors
 
@@ -171,11 +171,11 @@ public class Jeu1 extends AppCompatActivity {
             resultRound.setText("Fin de la partie");
             if(scorePlayer==3){
                 resultFinal.setText("Vous avez gagné !");
-                UptScore();
+                UptScore(); // appel la fontion pour ajouter les points dans le champs score de l'utilisateur actuel
 
             }else{
                 resultFinal.setText("Vous avez perdu !");
-                Upt1Score();
+                Upt1Score(); // même chose mais en enlevant des points
             }
 
             ComputerChoiceImg.setVisibility(View.INVISIBLE);
@@ -219,11 +219,11 @@ public class Jeu1 extends AppCompatActivity {
 
     }
 
-    public void UptScore() {
+    public void UptScore() { // si l'utilisateur gagne ajout de 3 pts dans son document
 
         FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
         String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        DocumentReference DocRef =rootRef.collection("users").document(user);
+        DocumentReference DocRef =rootRef.collection("users").document(user); // va dans le document qui a le même id que le CurrentUser
         DocRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
 
 
@@ -235,10 +235,10 @@ public class Jeu1 extends AppCompatActivity {
                         score=userScore;
                     score=score+3;
                     String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                    db.collection("users").document(user).update("score", score);
+                    db.collection("users").document(user).update("score", score); // modifie la valeur de la clef "score"
 
                 } else{
-                    Log.w(TAG, "Error adding document !!!!!!!!!!!!!!!");
+                    Log.w(TAG, "Error adding document !!!!!!!!!!!!!!!"); // ces deux fonctions sont les mêmes pour les jeux suivants, avec seulement le nombre de points qui change.
 
                 }
             }
@@ -246,7 +246,7 @@ public class Jeu1 extends AppCompatActivity {
 
     }
 
-    public void Upt1Score() {
+    public void Upt1Score() { // même principe
 
         FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
         String user = FirebaseAuth.getInstance().getCurrentUser().getUid();

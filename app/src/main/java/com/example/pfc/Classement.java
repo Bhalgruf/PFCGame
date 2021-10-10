@@ -55,11 +55,9 @@ public class Classement extends AppCompatActivity {
         }
     }
 
-    public void GetScore() {
+    public void GetScore() { // fonction pour lire les données dans la BDD
 
         final String[] ClassementJ = {""};
-        final String[] NomJ = {""};
-        final String[] ScoreJ= {""};
 
         db.collection("users").orderBy("score", Query.Direction.DESCENDING)
                 .get()
@@ -67,15 +65,15 @@ public class Classement extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if(task.isSuccessful()){
-                            int i=1;
-                            for (QueryDocumentSnapshot documentSnapshot : Objects.requireNonNull(task.getResult())){
+                            int i=1; // incrémentation pour classifier les joueurs
+                            for (QueryDocumentSnapshot documentSnapshot : Objects.requireNonNull(task.getResult())){ // boucle sur tous les documents
                                 Long userScore = documentSnapshot.getLong("score");
                                 String name= documentSnapshot.getString("first");
-                                ClassementJ[0]= ClassementJ[0]+i+" - "+name +" : "+userScore+"\n";
+                                ClassementJ[0]= ClassementJ[0]+i+" - "+name +" : "+userScore+"\n"; // affichage des noms avec leurs scores
                                 i++;
                             }
                             text = (TextView)findViewById(R.id.textView5);
-                            text.setText(ClassementJ[0]);
+                            text.setText(ClassementJ[0]); // affichage
                         }
                     }
                 });

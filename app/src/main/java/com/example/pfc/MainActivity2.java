@@ -59,19 +59,19 @@ public class MainActivity2 extends AppCompatActivity {
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
 
-        if(email.isEmpty()){
+        if(email.isEmpty()){ // champs non vide
             editTextEmail.setError("Email is required");
             editTextEmail.requestFocus();
             return;
         }
 
-        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){ // si l'adresse mail match avec le login d'un utilisateur dans Firestore
             editTextEmail.setError("please provide valid email");
             editTextEmail.requestFocus();
             return;
         }
 
-        if(password.length()<5){
+        if(password.length()<5){ // condition pas nécessaire
             editTextPassword.setError("min length should be 5 characters!");
             editTextPassword.requestFocus();
             return;
@@ -81,10 +81,9 @@ public class MainActivity2 extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
 
-                    if(task.isSuccessful()){
+                    if(task.isSuccessful()){ // si l'authentification est faite, l'utilisateur est connecté et il peut jouer (lancement de l'activité)
 
                             startActivity(new Intent(MainActivity2.this, Menu.class));
-
 
                     }else{
 
